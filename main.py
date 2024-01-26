@@ -19,4 +19,12 @@ window = ps.Window('Feet Inches to Meters',
 while True:
     event, values = window.read()
 
+    try:
+        feet = float(values['feet'])
+        inches = float(values['inches'])
+
+    except ValueError:
+        window['action_text'].update(value='You must type a valid number!', text_color='red')
+        continue
+
 window.close()
