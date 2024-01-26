@@ -1,5 +1,6 @@
 import PySimpleGUI as ps
 
+ps.theme('Dark')
 label1 = ps.Text('Enter feet:')
 label2 = ps.Text('Enter inches:')
 input1 = ps.InputText(key='feet')
@@ -26,5 +27,8 @@ while True:
     except ValueError:
         window['action_text'].update(value='You must type a valid number!', text_color='red')
         continue
+
+    meters = feet * 0.3048 + inches * 0.0254
+    window['action_text'].update(value=f'{meters:.4f}m', text_color='white', font='Arial')
 
 window.close()
