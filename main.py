@@ -6,6 +6,7 @@ label2 = ps.Text('Enter inches:')
 input1 = ps.InputText(key='feet')
 input2 = ps.InputText(key='inches')
 button = ps.Button('Convert', key='convert_button')
+exit_button = ps.Button('Exit', key='exit_button')
 action_text = ps.Text('', key='action_text')
 
 window = ps.Window('Feet Inches to Meters',
@@ -14,11 +15,14 @@ window = ps.Window('Feet Inches to Meters',
                        [input1],
                        [label2],
                        [input2],
-                       [button, action_text]
+                       [button, exit_button, action_text]
                    ])
 
 while True:
     event, values = window.read()
+
+    if event == 'exit_button' or event == ps.WIN_CLOSED:
+        break
 
     try:
         feet = float(values['feet'])
